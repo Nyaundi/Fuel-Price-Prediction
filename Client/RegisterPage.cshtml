@@ -1,0 +1,83 @@
+﻿@model Fuel_Price_Prophecy.Models.Registering
+@{
+	ViewBag.Title = "RegisterPage";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+@{
+	if (!string.IsNullOrWhiteSpace(Model.OutcomeOfCheckRegistration))
+	{
+		if (Model.OutcomeOfCheckRegistration == "Passed")
+		{
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Congratulation!</strong>  <a href="#" class="alert-link">You successfully registered</a>
+			</div>
+		}
+		else if (Model.OutcomeOfCheckRegistration == "SomeNullInput")
+		{
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Error!</strong> <a href="#" class="alert-link">Fields with <font color="#ED4040">*</font> are required</a>
+			</div>
+		}
+		else
+		{
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Error!</strong> <a href="#" class="alert-link">@Model.OutcomeOfCheckRegistration</a>
+			</div>
+		}
+	}
+	else
+	{
+		<br />
+		<br />
+
+	}
+}
+
+<center>
+	<div class="card text-white bg-secondary mb-3" style="max-width: 27rem;">
+		<div class="card-header">
+			<h1><font color="#FCF3CF">Register</font></h1>
+			<small class="form-text text-muted"><font color="#ED4040">* Indicates Required Fields</font></small>
+		</div>
+		<div class="card-body">
+			@using (Html.BeginForm("Register", "Client"))
+			{
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.Email)</font><font color="#ED4040">*</font>
+					@Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "You@email.com" })
+				</div>
+
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.Password)</font><font color="#ED4040">*</font>
+					@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password!@#1234" })
+				</div>
+
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.ConfirmPassword)</font><font color="#ED4040">*</font>
+					@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Password!@#1234" })
+				</div>
+
+				<button type="submit" class="btn btn-outline-success btn-lg">Submit &crarr;</button>
+				<button type="button" class="btn btn-outline-warning btn-lg" onClick="redirectOnClick()">Sign In &raquo;</button>
+				<script>
+					function redirectOnClick() {
+						document.location = "/Client/SignInPage";
+					}
+				</script>
+			}
+		</div>
+	</div>
+</center>
+

@@ -1,0 +1,74 @@
+﻿@model Fuel_Price_Prophecy.ViewModels.FuelQuoteViewModel
+@{
+	ViewBag.Title = "FuelQuoteForm";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+@{
+	if (!string.IsNullOrWhiteSpace(Model.OutComeOfValidateInput))
+	{
+		if (Model.OutComeOfValidateInput == "SomeNullInput")
+		{
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Error!</strong> <a href="#" class="alert-link">Fields with <font color="#ED4040">*</font> are required</a>
+			</div>
+		}
+	}
+}
+
+<center>
+	<div class="card text-white bg-secondary mb-3" style="max-width: 27rem;">
+		<div class="card-header">
+			<h3><font color="#FCF3CF">Fuel Quote Form</font></h3>
+			<small class="form-text text-muted"><font color="#ED4040">* Indicates Required Fields</font></small>
+		</div>
+		<div class="card-body">
+			@using (Html.BeginForm("Pricing", "Client"))
+			{
+				@Html.Hidden("clientId", Model.ClientId)
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.FuelQuote.GallonRequested)</font><font color="#ED4040">*</font>
+					@Html.TextBoxFor(m => m.FuelQuote.GallonRequested, new { @class = "form-control", type = "number" })
+				</div>
+
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.FuelQuote.DeliveryAddress)</font>
+					@Html.TextBoxFor(m => m.FuelQuote.DeliveryAddress, new { @class = "form-control", placeholder = Model.FuelQuote.DeliveryAddress, @readonly = "readonly" })
+				</div>
+
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.FuelQuote.DeliveryDate)</font><font color="#ED4040">*</font>
+					@Html.PasswordFor(m => m.FuelQuote.DeliveryDate, new { @class = "form-control", type = "date" })
+				</div>
+
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.FuelQuote.SuggestedPrice)</font>
+					@Html.PasswordFor(m => m.FuelQuote.SuggestedPrice, new { @class = "form-control", placeholder = Model.FuelQuote.SuggestedPrice, @readonly = "readonly" })
+				</div>
+
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.FuelQuote.TotalAmountDue)</font>
+					@Html.PasswordFor(m => m.FuelQuote.TotalAmountDue, new { @class = "form-control", placeholder = Model.FuelQuote.TotalAmountDue, @readonly = "readonly" })
+				</div>
+
+				<button type="submit" class="btn btn-outline-success btn-lg">Get Quote &crarr;</button>
+
+			}
+			@using (Html.BeginForm("FuelQuoteHistory", "Client"))
+			{
+				@Html.Hidden("clientId", Model.ClientId)
+				<button type="submit" class="btn btn-outline-warning">View Your Quote History &raquo;</button>
+			}
+			@using (Html.BeginForm("FromQuoteToProfile", "Client"))
+			{
+				@Html.Hidden("clientId", Model.ClientId)
+				<button type="submit" class="btn btn-outline-info">Manage Your Profile &raquo;</button>
+			}
+
+		</div>
+	</div>
+</center>
+

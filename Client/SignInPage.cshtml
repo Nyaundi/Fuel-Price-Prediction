@@ -1,0 +1,74 @@
+﻿@model Fuel_Price_Prophecy.ViewModels.ClientLoginViewModel
+@{
+	ViewBag.Title = "SignInPage";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+@{
+	if (!string.IsNullOrWhiteSpace(Model.OutcomeOfValidatingLogin))
+	{
+		if (Model.OutcomeOfValidatingLogin == "InvalidEmail")
+		{
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Error!</strong> <a href="#" class="alert-link">Invalid Email</a>
+			</div>
+		}
+		else if (Model.OutcomeOfValidatingLogin == "SomeNullInput")
+		{
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Error!</strong> <a href="#" class="alert-link">Fields with <font color="#ED4040">*</font> are required</a>
+			</div>
+		}
+		else
+		{
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Error!</strong> <a href="#" class="alert-link">Wrong username or password</a>
+			</div>
+		}
+	}
+	else
+	{
+		<br />
+		<br />
+
+	}
+}
+
+<center>
+	<div class="card text-white bg-secondary mb-3" style="max-width: 23rem;">
+		<div class="card-header">
+			<h1><font color="#FCF3CF">Sign In</font></h1>
+			<small class="form-text text-muted"><font color="#ED4040">* Indicates Required Fields</font></small>
+		</div>
+		<div class="card-body">
+			@using (Html.BeginForm("SignIn", "Client"))
+			{
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.Client.Email)</font><font color="#ED4040">*</font>
+					@Html.TextBoxFor(m => m.Client.Email, new { @class = "form-control", placeholder = "You@email.com"})
+
+				</div>
+				<div class="form-group" align="left">
+					<font color="#FCF3CF">@Html.LabelFor(m => m.Client.Password)</font><font color="#ED4040">*</font>
+					@Html.PasswordFor(m => m.Client.Password, new { @class = "form-control", placeholder = "Password!@#1234" })
+				</div>
+
+
+				<button type="submit" class="btn btn-outline-success">Sign in &crarr;</button>
+				<button type="button" class="btn btn-outline-warning" onClick="redirectOnClick()">New Customer? Click Here &raquo;</button>
+				<script>
+					function redirectOnClick() {
+						document.location = "/Client/RegisterPage";
+					}
+				</script>
+			}
+		</div>
+	</div>
+</center>
+

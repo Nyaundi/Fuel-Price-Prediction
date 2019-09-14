@@ -1,0 +1,230 @@
+﻿@model IEnumerable<Fuel_Price_Prophecy.Models.FuelQuote>
+@{
+	ViewBag.Title = "FuelQuoteHistory";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ClientQuoteId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.GallonRequested)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DeliveryAddress)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DeliveryDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.SuggestedPrice)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TotalAmountDue)
+		</th>
+	</tr>
+	@{
+		int i = 0;
+	}
+	@foreach (var item in Model)
+	{
+
+		if (i % 2 == 0)
+		{
+			<tr class="table-warning">
+				<td>
+					@Html.DisplayFor(modelItem => item.ClientQuoteId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.GallonRequested)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DeliveryAddress)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DeliveryDate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.SuggestedPrice)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TotalAmountDue)
+				</td>
+			</tr>
+		}
+		else
+		{
+			<tr class="table-info">
+				<td>
+					@Html.DisplayFor(modelItem => item.ClientQuoteId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.GallonRequested)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DeliveryAddress)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DeliveryDate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.SuggestedPrice)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TotalAmountDue)
+				</td>
+			</tr>
+		}
+
+		i++;
+	}
+
+</table>
+
+@*<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.ClientProfileId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Address1)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Address2)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.City)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.State)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Zipcode)
+			</th>
+
+		</tr>
+		@{
+			int i = 0;
+		}
+		@foreach (var item in Model)
+		{
+
+			if (i % 2 == 0)
+			{
+			<tr class="table-warning">
+				<td>
+					@Html.DisplayFor(modelItem => item.ClientProfileId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address1)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address2)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.City)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.State)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Zipcode)
+				</td>
+			</tr>
+			}
+			else
+			{
+			<tr class="table-info">
+				<td>
+					@Html.DisplayFor(modelItem => item.ClientProfileId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address1)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address2)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.City)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.State)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Zipcode)
+				</td>
+			</tr>
+			}
+
+			i++;
+		}
+
+	</table>*@
+
+@*
+	<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.ClientId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Email)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Password)
+			</th>
+
+		</tr>
+		@{
+			int i = 0;
+		}
+		@foreach (var item in Model)
+		{
+
+			if (i % 2 == 0)
+			{
+				<tr class="table-warning">
+					<td>
+						@Html.DisplayFor(modelItem => item.ClientId)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Email)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Password)
+					</td>
+				</tr>
+			}
+			else
+			{
+				<tr class="table-info">
+					<td>
+						@Html.DisplayFor(modelItem => item.ClientId)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Email)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Password)
+					</td>
+				</tr>
+			}
+
+			i++;
+		}
+
+	</table>
+*@
+

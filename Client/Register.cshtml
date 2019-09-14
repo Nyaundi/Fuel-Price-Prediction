@@ -1,0 +1,62 @@
+﻿
+@model Fuel_Price_Prophecy.Models.Registering
+@{
+	ViewBag.Title = "Register";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@model IEnumerable<Fuel_Price_Prophecy.Models.Client>*@
+@*
+	<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.ClientId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Email)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Password)
+			</th>
+			<th></th>
+		</tr>
+		@{
+			int i = 0;
+		}
+		@foreach (var item in Model)
+		{
+
+			if (i % 2 == 0)
+			{
+				<tr class="table-warning">
+					<td>
+						@Html.DisplayFor(modelItem => item.ClientId)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Email)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Password)
+					</td>
+				</tr>
+			}
+			else
+			{
+				<tr class="table-info">
+					<td>
+						@Html.DisplayFor(modelItem => item.ClientId)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Email)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Password)
+					</td>
+				</tr>
+			}
+
+			i++;
+		}
+
+	</table>
+
+
